@@ -30,13 +30,13 @@ class DeliveryTest {
         $("[data-test-id='agreement']").click();
         $x("//*[contains(text(), 'Запланировать')]").click();
         $("[data-test-id='success-notification']")
-                .shouldBe(visible).shouldHave(text("Встреча успешно запланирована на " + secondMeetingDate));
+                .shouldBe(visible, text("Встреча успешно запланирована на " + secondMeetingDate));
         $("[data-test-id='date'] input").doubleClick().sendKeys(firstMeetingDate);
         $x("//*[contains(text(), 'Запланировать')]").click();
         $("[data-test-id='replan-notification']")
-                .shouldBe(visible, text("У вас уже"));
+                .shouldBe(visible, text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
         $("[data-test-id='replan-notification'] button").click();
         $("[data-test-id='success-notification']")
-                .shouldBe(visible).shouldHave(text("Встреча успешно запланирована на " + firstMeetingDate));
+                .shouldBe(visible, text("Встреча успешно запланирована на " + firstMeetingDate));
     }
 }
